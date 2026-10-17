@@ -15,16 +15,25 @@ public class LoginTest {
     }
 
     public static void main(String[] args) {
+
+        // Test 1: Valid login
         test("Valid login",
                 login("student1", "AttendX@123"),
                 "Login successful");
 
+        // Test 2: Wrong password
         test("Wrong password",
                 login("student1", "wrong123"),
                 "Invalid username or password");
 
+        // Test 3: Empty username and password
         test("Empty fields",
                 login("", ""),
+                "Username and password are required");
+
+        // Test 4: Empty username
+        test("Empty username",
+                login("", "AttendX@123"),
                 "Username and password are required");
     }
 

@@ -6,7 +6,9 @@ public class AttendanceTest {
 
     private final Map<String, String> records = new HashMap<>();
 
+    // Marks attendance and prevents duplicate records.
     String markAttendance(String studentId) {
+
         if (studentId.isEmpty()) {
             return "Student ID is required";
         }
@@ -30,16 +32,20 @@ public class AttendanceTest {
     }
 
     public static void main(String[] args) {
+
         AttendanceTest app = new AttendanceTest();
 
+        // Test 1: Mark attendance
         app.test("Mark attendance",
                 app.markAttendance("STU101"),
                 "Attendance marked successfully");
 
+        // Test 2: Prevent duplicate attendance
         app.test("Duplicate attendance",
                 app.markAttendance("STU101"),
                 "Attendance already marked");
 
+        // Test 3: Empty student ID
         app.test("Empty student ID",
                 app.markAttendance(""),
                 "Student ID is required");
